@@ -4,19 +4,19 @@
 #
 # If you have the strings "First" and "Last" in the following variables:
 #
-  f = "First"                  # => "First"
-  l = "Last"                   # => "Last"
+  f = "First"                # => "First"
+  l = "Last"                 # => "Last"
 # Use only the "string concatenation" technique to complete the following:
 #
 # What code can you write to output the string "FirstLast"?
-  f + l                        # => "FirstLast"
-  "#{f}#{l}"                   # => "FirstLast"
+  f + l                      # => "FirstLast"
+  "#{f}#{l}"                 # => "FirstLast"
 # What code can you write to output the string "LastFirst"?
-  l + f                        # => "LastFirst"
-  "#{l}#{f}"                   # => "LastFirst"
+  l + f                      # => "LastFirst"
+  "#{l}#{f}"                 # => "LastFirst"
 # What code can you write to output the string "First Last"?
-  f + " " + l                  # => "First Last"
-  "#{f} #{l}"                  # => "First Last"
+  f + " " + l                # => "First Last"
+  "#{f} #{l}"                # => "First Last"
 # What code can you write to output the string "Last First Last First"?
   ((l + ' ' + f) + ' ') * 2  # => "Last First Last First "
   "#{l} #{f} #{l} #{f}"      # => "Last First Last First"

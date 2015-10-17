@@ -35,7 +35,7 @@
   end
 end
 
-# least amount of code
+# lesser amount of code
  10.times do |n|
    string = ''
    string += 'Super' if n % 7 == 0

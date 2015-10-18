@@ -1,10 +1,11 @@
-gem 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
+gem 'minitest'              # => true
+require 'minitest/autorun'  # => true
+require 'minitest/pride'    # => true
 
 class SortByPatternTest < Minitest::Test
 
   def test_sort_alphabetically
+    skip
     words = ["broccoli", "Carrots", "FISH", "Bacon", "candy"]
     transformed = []
     words.each do |word|
@@ -19,17 +20,19 @@ class SortByPatternTest < Minitest::Test
   end
 
   def test_sort_alphabetically_by_last_letter
-    things = ["pill", "box", "glass", "water", "sponge"]
-    transformed = []
-    things.each do |thing|
-      # Your code goes here
-    end
-    transformed = transformed.sort
-    sorted = []
+    things = ["pill", "box", "glass", "water", "sponge"]              # => ["pill", "box", "glass", "water", "sponge"]
+    transformed = []                                                  # => []
+    things.each do |thing|                                            # => ["pill", "box", "glass", "water", "sponge"]
+      transformed << [thing[-1], thing]                               # => [["l", "pill"]], [["l", "pill"], ["x", "box"]], [["l", "pill"], ["x", "box"], ["s", "glass"]], [["l", "pill"], ["x", "box"], ["s", "glass"], ["r", "water"]], [["l", "pill"], ["x", "box"], ["s", "glass"], ["r", "water"], ["e", "sponge"]]
+    end                                                               # => ["pill", "box", "glass", "water", "sponge"]
+    transformed = transformed.sort                                    # => [["e", "sponge"], ["l", "pill"], ["r", "water"], ["s", "glass"], ["x", "box"]]
+    sorted = []                                                       # => []
     transformed.each do |sort_key, thing|
-      sorted << thing
-    end
-    assert_equal ["sponge", "pill", "water", "glass", "box"], sorted
+      puts sort_key
+      puts thing                           # => [["e", "sponge"], ["l", "pill"], ["r", "water"], ["s", "glass"], ["x", "box"]]
+      sorted << thing                                                 # => ["sponge"], ["sponge", "pill"], ["sponge", "pill", "water"], ["sponge", "pill", "water", "glass"], ["sponge", "pill", "water", "glass", "box"]
+    end                                                               # => [["e", "sponge"], ["l", "pill"], ["r", "water"], ["s", "glass"], ["x", "box"]]
+    assert_equal ["sponge", "pill", "water", "glass", "box"], sorted  # => true
   end
 
   def test_sort_by_distance
@@ -67,3 +70,21 @@ class SortByPatternTest < Minitest::Test
   end
 
 end
+
+# >> Run options: --seed 40603
+# >>
+# >> # Running:
+# >>
+# >> .SSSSS
+# >>
+# >> Finished in 0.001321s, 4543.3067 runs/s, 757.2178 assertions/s.
+# >>
+# >> 6 runs, 1 assertions, 0 failures, 0 errors, 5 skips
+# >>
+# >> You have skipped tests. Run with --verbose for details.
+# >> 6 tests (5 skipped)
+# >> 1 assertions, 0 failures, 0 errors
+# >>
+# >> 4402.82 tests/s, 733.80 assertions/s
+# >>
+# >> Finished in 0.0014 seconds
